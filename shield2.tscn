@@ -1,0 +1,69 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://sprites/shield2.png" type="Texture" id=1]
+
+[sub_resource type="PhysicsMaterial" id=1]
+friction = 0.0
+
+[sub_resource type="Animation" id=2]
+resource_name = "shield_rotate"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "pulsate"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.407843 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="shield" type="RigidBody2D"]
+modulate = Color( 1, 1, 1, 0.407843 )
+mode = 1
+physics_material_override = SubResource( 1 )
+
+[node name="shield" type="Sprite" parent="."]
+rotation = 1.74846e-07
+texture = ExtResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "shield_rotate"
+anims/shield_rotate = SubResource( 2 )
+
+[node name="secondary_shield_anim" type="AnimationPlayer" parent="."]
+anims/pulsate = SubResource( 3 )
+
+[node name="CollisionPolygon2D1" type="CollisionPolygon2D" parent="."]
+position = Vector2( -70.8746, 77.3134 )
+scale = Vector2( 1.05716, 1.02332 )
+polygon = PoolVector2Array( 187.977, -147.38, 143.587, -184.654, 86.3221, -213.141, 81.0236, -202.74, 109.238, -191.302, 155.776, -161.385, 179.822, -135.557 )
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="."]
+position = Vector2( 128.779, 15.4756 )
+scale = Vector2( 1.09621, 1 )
+polygon = PoolVector2Array( -214.848, -98.3036, -233.019, -57.6864, -239.7, 2.44016, -231.349, 59.2264, -218.133, 89.7882, -203.264, 74.1011, -219.658, 50.8755, -228.009, -7.58093, -206.296, -84.4093 )
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="."]
+position = Vector2( -70.8361, -75.8305 )
+scale = Vector2( 1.03821, 1 )
+polygon = PoolVector2Array( 80.0296, 215.505, 111.039, 206.202, 149.214, 190.495, 181.432, 156.209, 197.542, 124.432, 204.791, 98.508, 195.931, 99.3443, 183.043, 136.139, 166.934, 156.209, 134.715, 185.477, 87.656, 201.192 )
