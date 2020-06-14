@@ -31,3 +31,7 @@ func read_savegame():
 
 func _on_exit_pressed():
 	get_tree().quit()
+
+
+func _on_standings_pressed():
+	get_tree().change_scene("res://store.tscn")

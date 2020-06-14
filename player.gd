@@ -4,7 +4,7 @@ var color_count = 0
 #var Color_array = [Color(0.04,0.6,0.08,1),Color(0.96,0.26,0.21,1)]
 var Color_array = [Color.green, Color.yellow, Color.red]
 var tween_values = [0.0,1000.0]
-const shield = preload("res://shield1.tscn")
+const shield = preload("res://shield2.tscn")
 var inst
 
 func _ready():
