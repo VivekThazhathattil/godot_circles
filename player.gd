@@ -4,7 +4,7 @@ var color_count = 0
 #var Color_array = [Color(0.04,0.6,0.08,1),Color(0.96,0.26,0.21,1)]
 var Color_array = [Color.green, Color.yellow, Color.red]
 var tween_values = [0.0,1000.0]
-const shield = preload("res://shield2.tscn")
+const shield = preload("res://shield1.tscn")
 var inst
 
 func _ready():
@@ -15,16 +15,19 @@ func _ready():
 	modulate = Color_array[0]
 	$orb.position = Vector2(scr_size.x/2,scr_size.y/2)
 	$shield.position = Vector2(scr_size.x/2,scr_size.y/2)
-	$shield/AnimationPlayer.play("shield_rotate")
+#	$shield/AnimationPlayer.play("shield_rotate")
+	$shield._custom_rotate()
 	$orb/orb_rotate.play("rotate")
 	pass
 
 func _input(event):
 	if event.is_action_pressed("tap"):
 		if is_anim_backwards:
-			$shield/AnimationPlayer.play("shield_rotate")
+#			$shield/AnimationPlayer.play("shield_rotate")
+			$shield._custom_rotate()
 		else:
-			$shield/AnimationPlayer.play_backwards("shield_rotate")
+			$shield._custom_rotate_backwards()
+#			$shield/AnimationPlayer.play_backwards("shield_rotate")
 		is_anim_backwards = not is_anim_backwards
 
 func _on_orb_body_entered(body):

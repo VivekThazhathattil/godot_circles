@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://sprites/menu_bg.png" type="Texture" id=1]
 [ext_resource path="res://sprites/play_button.png" type="Texture" id=2]
@@ -18,7 +18,9 @@ outline_size = 10
 outline_color = Color( 0, 0, 0, 1 )
 font_data = SubResource( 1 )
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="StyleBoxEmpty" id=6]
+
+[sub_resource type="Animation" id=3]
 resource_name = "rotate"
 length = 3.0
 loop = true
@@ -35,14 +37,16 @@ tracks/0/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 1.2, 1.2 ), Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="DynamicFontData" id=5]
+[sub_resource type="DynamicFontData" id=4]
 font_path = "res://assets/Imperial.otf"
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=5]
 size = 50
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
-font_data = SubResource( 5 )
+font_data = SubResource( 4 )
+
+[sub_resource type="StyleBoxEmpty" id=7]
 
 [node name="menu" type="Node2D"]
 script = ExtResource( 8 )
@@ -51,6 +55,9 @@ script = ExtResource( 8 )
 margin_right = 600.0
 margin_bottom = 1024.0
 texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="game title" type="Label" parent="."]
 margin_left = -2.32788
@@ -59,8 +66,8 @@ margin_right = 621.672
 margin_bottom = 417.0
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color_shadow = Color( 0.14902, 0.14902, 0.14902, 1 )
-text = "Chakra
-Vyuha"
+text = "Spin
+Shield"
 align = 1
 valign = 1
 uppercase = true
@@ -71,29 +78,28 @@ __meta__ = {
 [node name="play_button2" type="Button" parent="."]
 margin_left = 200.0
 margin_top = 450.0
-margin_right = 400.0
-margin_bottom = 650.0
-rect_scale = Vector2( 1.0483, 1.0483 )
+margin_right = 434.0
+margin_bottom = 660.0
+custom_styles/focus = SubResource( 6 )
 flat = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="play_button" type="Sprite" parent="play_button2"]
-scale = Vector2( 1, 1 )
 texture = ExtResource( 2 )
 offset = Vector2( 100, 100 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="play_button2/play_button"]
 autoplay = "rotate"
-anims/rotate = SubResource( 4 )
+anims/rotate = SubResource( 3 )
 
 [node name="score" type="Label" parent="."]
-margin_left = 178.851
-margin_top = 705.685
-margin_right = 412.851
-margin_bottom = 767.685
-custom_fonts/font = SubResource( 6 )
+margin_left = 145.377
+margin_top = 708.474
+margin_right = 379.377
+margin_bottom = 770.474
+custom_fonts/font = SubResource( 5 )
 text = "BEST : "
 __meta__ = {
 "_edit_use_anchors_": false
@@ -114,6 +120,7 @@ __meta__ = {
 margin_right = 120.0
 margin_bottom = 124.0
 rect_min_size = Vector2( 120, 0 )
+custom_styles/focus = SubResource( 7 )
 icon = ExtResource( 6 )
 flat = true
 
@@ -122,6 +129,7 @@ margin_left = 124.0
 margin_right = 244.0
 margin_bottom = 124.0
 rect_min_size = Vector2( 120, 0 )
+custom_styles/focus = SubResource( 7 )
 icon = ExtResource( 3 )
 flat = true
 
@@ -130,6 +138,7 @@ margin_left = 248.0
 margin_right = 368.0
 margin_bottom = 124.0
 rect_min_size = Vector2( 120, 0 )
+custom_styles/focus = SubResource( 7 )
 icon = ExtResource( 7 )
 flat = true
 
@@ -138,6 +147,7 @@ margin_left = 372.0
 margin_right = 492.0
 margin_bottom = 124.0
 rect_min_size = Vector2( 120, 0 )
+custom_styles/focus = SubResource( 7 )
 icon = ExtResource( 4 )
 flat = true
 
@@ -146,6 +156,7 @@ margin_left = 496.0
 margin_right = 606.0
 margin_bottom = 124.0
 rect_min_size = Vector2( 110, 0 )
+custom_styles/focus = SubResource( 7 )
 icon = ExtResource( 5 )
 flat = true
 __meta__ = {

@@ -17,7 +17,7 @@ func _ready():
 	$AnimationPlayer.play("rotate")
 	
 func _set_enemy_velocity():
-	vel_mag = randi()%300 + 400
+	vel_mag = randi()%300 + 200
 	vel_dir = _get_velocity_direction()
 	#print("vel_mag = " + str(vel_mag))
 	

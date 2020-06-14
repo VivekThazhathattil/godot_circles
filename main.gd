@@ -25,6 +25,7 @@ func _ready():
 	$score_hud._reset_score()
 	sfx.append(preload("res://assets/hit.wav"))
 	sfx.append(preload("res://assets/orb_enter.ogg"))
+	sfx.append(preload("res://assets/level_change.ogg"))
 	pass
 	
 func _on_Timer_timeout():

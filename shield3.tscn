@@ -1,0 +1,87 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://sprites/shield3-2.png" type="Texture" id=1]
+[ext_resource path="res://sprites/shield3-1.png" type="Texture" id=2]
+[ext_resource path="res://shield3.gd" type="Script" id=3]
+
+[sub_resource type="Animation" id=4]
+resource_name = "rotate"
+length = 1.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("..:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -360.0 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "shield_rotate"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "pulsate"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.407843 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="shield" type="RigidBody2D"]
+modulate = Color( 1, 1, 1, 0.407843 )
+script = ExtResource( 3 )
+
+[node name="shield3-1" type="RigidBody2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="shield3-1"]
+anims/rotate = SubResource( 4 )
+
+[node name="shield3-1" type="Sprite" parent="shield3-1"]
+texture = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="shield3-1"]
+build_mode = 1
+polygon = PoolVector2Array( -116.622, -50.0993, -124.09, -30.4629, -127.268, -11.3967, -126.871, 22.3666, -116.146, 54.9382, -102.641, 79.1683, -85.1633, 97.8373, -55.7694, 116.904, -22.8006, 129.217, 11.3599, 129.615, 43.5342, 121.273, 54.7133, 118.927, 60.9035, 126.665, 37.1788, 134.778, 6.59329, 138.75, -23.1978, 135.573, -54.1805, 127.628, -78.4106, 113.329, -108.202, 84.7293, -125.282, 53.7465, -136.404, 16.8056, -133.226, -32.449, -126.202, -52.4942 )
+
+[node name="shield3-2" type="RigidBody2D" parent="."]
+scale = Vector2( 1, 1 )
+
+[node name="shield3-2" type="Sprite" parent="shield3-2"]
+texture = ExtResource( 1 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="shield3-2"]
+build_mode = 1
+polygon = PoolVector2Array( 53.8618, -103.55, 80.4752, -86.073, 97.5554, -64.6234, 109.137, -41.6196, 117.082, -19.041, 115.409, 10.2274, 106.629, 41.1683, 101.917, 39.1126, 106.629, 13.9905, 99.9388, -47.4732, 65.6529, -90.9578, 44.6182, -98.8244 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="shield3-2"]
+autoplay = "shield_rotate"
+anims/shield_rotate = SubResource( 2 )
+
+[node name="secondary_shield_anim" type="AnimationPlayer" parent="."]
+anims/pulsate = SubResource( 3 )
