@@ -4,14 +4,29 @@ var color_count = 0
 #var Color_array = [Color(0.04,0.6,0.08,1),Color(0.96,0.26,0.21,1)]
 var Color_array = [Color.green, Color.yellow, Color.red]
 var tween_values = [0.0,1000.0]
-const shield = preload("res://shield2.tscn")
+var shield
 var inst
 
+func _set_orb_and_shield():
+	$"..".savegame.open($"..".save_path, File.READ) #open the file
+	$"..".save_data = $"..".savegame.get_var() #get the value
+	$"..".savegame.close() #close the file
+	var orb_str = $"..".save_data["orb"]
+	var shield_str = $"..".save_data["shield"]
+	if shield_str == "shield2":
+		shield = preload("res://shield2.tscn")
+	else:
+		shield = preload("res://shield1.tscn")
+		
+	inst = shield.instance()
+	self.add_child(inst)
+	$orb/player_orb.set_texture(load("res://sprites/"+str(orb_str)+".png"))
+	$shield/shield.set_texture(load("res://sprites/"+str(shield_str)+".png"))
+	
 func _ready():
 	var scr_size = get_viewport().size
 	#print(scr_size)
-	inst = shield.instance()
-	self.add_child(inst)
+	_set_orb_and_shield()
 	modulate = Color_array[0]
 	$orb.position = Vector2(scr_size.x/2,scr_size.y/2)
 	$shield.position = Vector2(scr_size.x/2,scr_size.y/2)

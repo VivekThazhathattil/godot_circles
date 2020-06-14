@@ -1,13 +1,14 @@
 extends Node2D
 var savegame = File.new() #file
 var save_path = "user://savegame.save" #place of the file
-var save_data = {"highscore": 0} #variable to store data
+var save_data = {"highscore": 0, "orb": "player_orb", "shield": "shield", "stars": 0, "shield_des": "shield"} #variable to store data
 
 func _ready():
 	if not savegame.file_exists(save_path):
 		create_save()
 	var high_score = read_savegame()
 	$score.text = "BEST : " + str(high_score)
+	print(get_res_loc())
 
 func _on_play_button2_pressed():
 	get_tree().change_scene("res://main.tscn")
@@ -28,6 +29,12 @@ func read_savegame():
    save_data = savegame.get_var() #get the value
    savegame.close() #close the file
    return save_data["highscore"] #return the value
+
+func get_res_loc():
+   savegame.open(save_path, File.READ) #open the file
+   save_data = savegame.get_var() #get the value
+   savegame.close() #close the file
+   return save_data["orb"] #return the value
 
 func _on_exit_pressed():
 	get_tree().quit()

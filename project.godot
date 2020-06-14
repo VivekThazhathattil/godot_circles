@@ -17,6 +17,7 @@ _global_script_class_icons={
 
 config/name="Chakra Vyuha"
 run/main_scene="res://menu.tscn"
+run/disable_stdout=true
 config/icon="res://icon.png"
 
 [display]

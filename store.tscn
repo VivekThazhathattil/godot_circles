@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://sprites/player_orb.png" type="Texture" id=1]
 [ext_resource path="res://sprites/orb3.png" type="Texture" id=2]
@@ -9,7 +9,21 @@
 [ext_resource path="res://sprites/orb4.png" type="Texture" id=7]
 [ext_resource path="res://sprites/orb9.png" type="Texture" id=8]
 [ext_resource path="res://sprites/orb7.png" type="Texture" id=9]
+[ext_resource path="res://sprites/back_button.png" type="Texture" id=10]
+[ext_resource path="res://sprites/orb_clicked_state.png" type="Texture" id=11]
+[ext_resource path="res://sprites/next_button.png" type="Texture" id=12]
+[ext_resource path="res://sprites/shield.png" type="Texture" id=13]
+[ext_resource path="res://sprites/shield2.png" type="Texture" id=14]
+[ext_resource path="res://sprites/shield1-des7.png" type="Texture" id=15]
+[ext_resource path="res://sprites/shield3.png" type="Texture" id=16]
+[ext_resource path="res://sprites/shield1-des4.png" type="Texture" id=17]
+[ext_resource path="res://sprites/shield1-des3.png" type="Texture" id=18]
+[ext_resource path="res://sprites/shield1-des5.png" type="Texture" id=19]
 [ext_resource path="res://store.gd" type="Script" id=20]
+[ext_resource path="res://sprites/shield1-des1.png" type="Texture" id=21]
+[ext_resource path="res://sprites/shield1-des2.png" type="Texture" id=22]
+[ext_resource path="res://sprites/shield1-des6.png" type="Texture" id=23]
+[ext_resource path="res://sprites/shield_clicked.png" type="Texture" id=24]
 
 [sub_resource type="DynamicFontData" id=1]
 font_path = "res://assets/Imperial.otf"
@@ -18,19 +32,42 @@ font_path = "res://assets/Imperial.otf"
 size = 30
 font_data = SubResource( 1 )
 
+[sub_resource type="DynamicFontData" id=3]
+font_path = "res://assets/Imperial.otf"
+
+[sub_resource type="DynamicFont" id=4]
+size = 50
+font_data = SubResource( 3 )
+
+[sub_resource type="Animation" id=5]
+resource_name = "swipe"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -650, 0 ), Vector2( -600, 0 ) ]
+}
+
 [node name="store" type="Node2D"]
 script = ExtResource( 20 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
-rect_min_size = Vector2( 600, 1024 )
+rect_min_size = Vector2( 1200, 1024 )
 color = Color( 0.0666667, 0.0666667, 0.0666667, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="orb_container" type="CenterContainer" parent="."]
 margin_right = 600.0
 margin_bottom = 1024.0
 mouse_filter = 1
@@ -38,14 +75,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
-margin_top = 232.0
+[node name="VBoxContainer" type="VBoxContainer" parent="orb_container"]
+margin_top = 26.0
 margin_right = 600.0
-margin_bottom = 792.0
+margin_bottom = 998.0
 custom_constants/separation = 100
 alignment = 1
 
-[node name="orbs_label" type="Label" parent="CenterContainer/VBoxContainer"]
+[node name="orbs_label" type="Label" parent="orb_container/VBoxContainer"]
 margin_right = 600.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 600, 100 )
@@ -55,7 +92,7 @@ text = "ORBS"
 align = 1
 valign = 1
 
-[node name="orbs_grids" type="GridContainer" parent="CenterContainer/VBoxContainer"]
+[node name="orbs_grids" type="GridContainer" parent="orb_container/VBoxContainer"]
 margin_left = 100.0
 margin_top = 200.0
 margin_right = 500.0
@@ -69,77 +106,279 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureButton" type="TextureButton" parent="CenterContainer/VBoxContainer/orbs_grids"]
+[node name="TextureButton" type="TextureButton" parent="orb_container/VBoxContainer/orbs_grids"]
 margin_right = 100.0
 margin_bottom = 100.0
 mouse_filter = 1
 texture_normal = ExtResource( 1 )
+texture_pressed = ExtResource( 11 )
 
-[node name="TextureButton2" type="TextureButton" parent="CenterContainer/VBoxContainer/orbs_grids"]
+[node name="TextureButton2" type="TextureButton" parent="orb_container/VBoxContainer/orbs_grids"]
 margin_left = 150.0
 margin_right = 250.0
 margin_bottom = 100.0
 mouse_filter = 1
 texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 11 )
 
-[node name="TextureButton3" type="TextureButton" parent="CenterContainer/VBoxContainer/orbs_grids"]
+[node name="TextureButton3" type="TextureButton" parent="orb_container/VBoxContainer/orbs_grids"]
 margin_left = 300.0
 margin_right = 400.0
 margin_bottom = 100.0
 mouse_filter = 1
 texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 11 )
 
-[node name="TextureButton4" type="TextureButton" parent="CenterContainer/VBoxContainer/orbs_grids"]
+[node name="TextureButton4" type="TextureButton" parent="orb_container/VBoxContainer/orbs_grids"]
 margin_top = 130.0
 margin_right = 100.0
 margin_bottom = 230.0
 mouse_filter = 1
 texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 11 )
 
-[node name="TextureButton5" type="TextureButton" parent="CenterContainer/VBoxContainer/orbs_grids"]
+[node name="TextureButton5" type="TextureButton" parent="orb_container/VBoxContainer/orbs_grids"]
 margin_left = 150.0
 margin_top = 130.0
 margin_right = 250.0
 margin_bottom = 230.0
 mouse_filter = 1
 texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 11 )
 
-[node name="TextureButton6" type="TextureButton" parent="CenterContainer/VBoxContainer/orbs_grids"]
+[node name="TextureButton6" type="TextureButton" parent="orb_container/VBoxContainer/orbs_grids"]
 margin_left = 300.0
 margin_top = 130.0
 margin_right = 400.0
 margin_bottom = 230.0
 mouse_filter = 1
 texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 11 )
 
-[node name="TextureButton7" type="TextureButton" parent="CenterContainer/VBoxContainer/orbs_grids"]
+[node name="TextureButton7" type="TextureButton" parent="orb_container/VBoxContainer/orbs_grids"]
 margin_top = 260.0
 margin_right = 100.0
 margin_bottom = 360.0
 mouse_filter = 1
 texture_normal = ExtResource( 9 )
+texture_pressed = ExtResource( 11 )
 
-[node name="TextureButton8" type="TextureButton" parent="CenterContainer/VBoxContainer/orbs_grids"]
+[node name="TextureButton8" type="TextureButton" parent="orb_container/VBoxContainer/orbs_grids"]
 margin_left = 150.0
 margin_top = 260.0
 margin_right = 250.0
 margin_bottom = 360.0
 mouse_filter = 1
 texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 11 )
 
-[node name="TextureButton9" type="TextureButton" parent="CenterContainer/VBoxContainer/orbs_grids"]
+[node name="TextureButton9" type="TextureButton" parent="orb_container/VBoxContainer/orbs_grids"]
 margin_left = 300.0
 margin_top = 260.0
 margin_right = 400.0
 margin_bottom = 360.0
 mouse_filter = 1
 texture_normal = ExtResource( 8 )
-[connection signal="pressed" from="CenterContainer/VBoxContainer/orbs_grids/TextureButton" to="." method="_on_TextureButton_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/orbs_grids/TextureButton2" to="." method="_on_TextureButton2_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/orbs_grids/TextureButton3" to="." method="_on_TextureButton3_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/orbs_grids/TextureButton4" to="." method="_on_TextureButton4_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/orbs_grids/TextureButton5" to="." method="_on_TextureButton5_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/orbs_grids/TextureButton6" to="." method="_on_TextureButton6_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/orbs_grids/TextureButton7" to="." method="_on_TextureButton7_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/orbs_grids/TextureButton8" to="." method="_on_TextureButton8_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/orbs_grids/TextureButton9" to="." method="_on_TextureButton9_pressed"]
+texture_pressed = ExtResource( 11 )
+
+[node name="next_button" type="Button" parent="orb_container/VBoxContainer"]
+margin_left = 244.0
+margin_top = 660.0
+margin_right = 356.0
+margin_bottom = 766.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 4 )
+icon = ExtResource( 12 )
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="orb_container/VBoxContainer"]
+margin_left = 244.0
+margin_top = 866.0
+margin_right = 356.0
+margin_bottom = 972.0
+rect_pivot_offset = Vector2( 679.79, -100 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 4 )
+icon = ExtResource( 10 )
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="shields_label" type="Label" parent="."]
+margin_left = 600.0
+margin_top = 50.0
+margin_right = 1200.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 600, 100 )
+mouse_filter = 1
+custom_fonts/font = SubResource( 2 )
+text = "SHIELDS
+"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="node_container" type="Node2D" parent="."]
+position = Vector2( 650, 200 )
+
+[node name="shield1" type="TextureButton" parent="node_container"]
+margin_right = 300.0
+margin_bottom = 300.0
+rect_scale = Vector2( 0.3, 0.3 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource( 13 )
+texture_pressed = ExtResource( 24 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="shield2" type="TextureButton" parent="node_container"]
+margin_left = 135.325
+margin_right = 435.325
+margin_bottom = 300.0
+rect_scale = Vector2( 0.3, 0.3 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource( 14 )
+texture_pressed = ExtResource( 24 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="shield3" type="TextureButton" parent="node_container"]
+margin_left = 273.79
+margin_right = 573.79
+margin_bottom = 300.0
+rect_scale = Vector2( 0.3, 0.3 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource( 16 )
+texture_pressed = ExtResource( 24 )
+
+[node name="shield4" type="TextureButton" parent="node_container"]
+margin_left = 388.965
+margin_right = 688.965
+margin_bottom = 300.0
+rect_scale = Vector2( 0.3, 0.3 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource( 21 )
+texture_pressed = ExtResource( 24 )
+
+[node name="shield5" type="TextureButton" parent="node_container"]
+margin_left = -5.03491
+margin_top = 120.755
+margin_right = 294.965
+margin_bottom = 420.755
+rect_scale = Vector2( 0.3, 0.3 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource( 22 )
+texture_pressed = ExtResource( 24 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="shield6" type="TextureButton" parent="node_container"]
+margin_left = 130.29
+margin_top = 120.755
+margin_right = 430.29
+margin_bottom = 420.755
+rect_scale = Vector2( 0.3, 0.3 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource( 18 )
+texture_pressed = ExtResource( 24 )
+
+[node name="shield7" type="TextureButton" parent="node_container"]
+margin_left = 268.755
+margin_top = 120.755
+margin_right = 568.755
+margin_bottom = 420.755
+rect_scale = Vector2( 0.3, 0.3 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource( 17 )
+texture_pressed = ExtResource( 24 )
+
+[node name="shield8" type="TextureButton" parent="node_container"]
+margin_left = 391.483
+margin_top = 120.755
+margin_right = 691.483
+margin_bottom = 420.755
+rect_scale = Vector2( 0.3, 0.3 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource( 19 )
+texture_pressed = ExtResource( 24 )
+
+[node name="shield9" type="TextureButton" parent="node_container"]
+margin_left = -5.03491
+margin_top = 256.904
+margin_right = 294.965
+margin_bottom = 556.904
+rect_scale = Vector2( 0.3, 0.3 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource( 23 )
+texture_pressed = ExtResource( 24 )
+
+[node name="shield10" type="TextureButton" parent="node_container"]
+margin_left = 132.808
+margin_top = 259.422
+margin_right = 432.808
+margin_bottom = 559.422
+rect_scale = Vector2( 0.3, 0.3 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource( 15 )
+texture_pressed = ExtResource( 24 )
+
+[node name="Button2" type="Button" parent="."]
+margin_left = 860.797
+margin_top = 742.202
+margin_right = 972.797
+margin_bottom = 848.202
+rect_pivot_offset = Vector2( 679.79, -100 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 4 )
+icon = ExtResource( 10 )
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/swipe = SubResource( 5 )
+[connection signal="pressed" from="orb_container/VBoxContainer/orbs_grids/TextureButton" to="." method="_on_TextureButton_pressed"]
+[connection signal="pressed" from="orb_container/VBoxContainer/orbs_grids/TextureButton2" to="." method="_on_TextureButton2_pressed"]
+[connection signal="pressed" from="orb_container/VBoxContainer/orbs_grids/TextureButton3" to="." method="_on_TextureButton3_pressed"]
+[connection signal="pressed" from="orb_container/VBoxContainer/orbs_grids/TextureButton4" to="." method="_on_TextureButton4_pressed"]
+[connection signal="pressed" from="orb_container/VBoxContainer/orbs_grids/TextureButton5" to="." method="_on_TextureButton5_pressed"]
+[connection signal="pressed" from="orb_container/VBoxContainer/orbs_grids/TextureButton6" to="." method="_on_TextureButton6_pressed"]
+[connection signal="pressed" from="orb_container/VBoxContainer/orbs_grids/TextureButton7" to="." method="_on_TextureButton7_pressed"]
+[connection signal="pressed" from="orb_container/VBoxContainer/orbs_grids/TextureButton8" to="." method="_on_TextureButton8_pressed"]
+[connection signal="pressed" from="orb_container/VBoxContainer/orbs_grids/TextureButton9" to="." method="_on_TextureButton9_pressed"]
+[connection signal="pressed" from="orb_container/VBoxContainer/next_button" to="." method="_on_next_button_pressed"]
+[connection signal="pressed" from="orb_container/VBoxContainer/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="node_container/shield1" to="." method="_on_shield1_pressed"]
+[connection signal="pressed" from="node_container/shield2" to="." method="_on_shield2_pressed"]
+[connection signal="pressed" from="node_container/shield3" to="." method="_on_shield3_pressed"]
+[connection signal="pressed" from="node_container/shield4" to="." method="_on_shield4_pressed"]
+[connection signal="pressed" from="node_container/shield5" to="." method="_on_shield5_pressed"]
+[connection signal="pressed" from="node_container/shield6" to="." method="_on_shield6_pressed"]
+[connection signal="pressed" from="node_container/shield7" to="." method="_on_shield7_pressed"]
+[connection signal="pressed" from="node_container/shield8" to="." method="_on_shield8_pressed"]
+[connection signal="pressed" from="node_container/shield9" to="." method="_on_shield9_pressed"]
+[connection signal="pressed" from="node_container/shield10" to="." method="_on_shield10_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_Button2_pressed"]

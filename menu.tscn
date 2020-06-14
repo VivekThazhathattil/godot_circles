@@ -18,10 +18,9 @@ outline_size = 10
 outline_color = Color( 0, 0, 0, 1 )
 font_data = SubResource( 1 )
 
-[sub_resource type="StyleBoxEmpty" id=6]
+[sub_resource type="StyleBoxEmpty" id=3]
 
-[sub_resource type="Animation" id=3]
-resource_name = "rotate"
+[sub_resource type="Animation" id=4]
 length = 3.0
 loop = true
 tracks/0/type = "value"
@@ -37,14 +36,14 @@ tracks/0/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 1.2, 1.2 ), Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="DynamicFontData" id=4]
+[sub_resource type="DynamicFontData" id=5]
 font_path = "res://assets/Imperial.otf"
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=6]
 size = 50
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
-font_data = SubResource( 4 )
+font_data = SubResource( 5 )
 
 [sub_resource type="StyleBoxEmpty" id=7]
 
@@ -80,7 +79,7 @@ margin_left = 200.0
 margin_top = 450.0
 margin_right = 434.0
 margin_bottom = 660.0
-custom_styles/focus = SubResource( 6 )
+custom_styles/focus = SubResource( 3 )
 flat = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -92,14 +91,14 @@ offset = Vector2( 100, 100 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="play_button2/play_button"]
 autoplay = "rotate"
-anims/rotate = SubResource( 3 )
+anims/rotate = SubResource( 4 )
 
 [node name="score" type="Label" parent="."]
 margin_left = 145.377
 margin_top = 708.474
 margin_right = 379.377
 margin_bottom = 770.474
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 text = "BEST : "
 __meta__ = {
 "_edit_use_anchors_": false
