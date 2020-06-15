@@ -47,6 +47,7 @@ func _input(event):
 
 func _on_orb_body_entered(body):
 	if body.is_powerup != 0:
+		$"..".stars += 1
 		_enable_powerup(body.is_powerup)
 		body.queue_free()
 	elif color_count < 2:

@@ -4,22 +4,26 @@ const powerup = preload("res://powerup.tscn")
 var inst
 var powerup_inst
 var sfx = []
+var stars = 0
 
 var savegame = File.new() #file
 var save_path = "user://savegame.save" #place of the file
-var save_data = {"highscore": 0} #variable to store data
+var save_data
 
 func save(high_score):    
-	save_data["highscore"] = high_score #data to save   
+	savegame.open(save_path, File.READ) #open the file
+	save_data = savegame.get_var() #get the value
+	savegame.close() #close the file
+		
 	savegame.open(save_path, File.WRITE) #open file to write
+#	print("old save data = " + str(save_data["stars"]))
+#	print("stars = " + str(stars))
+	if save_data["highscore"] < high_score:
+		save_data["highscore"] = high_score #data to save   
+	save_data["stars"] += stars
+#	print("new save data = " + str(save_data["stars"]))
 	savegame.store_var(save_data) #store the data
 	savegame.close() # close the file
-
-func read_savegame():
-   savegame.open(save_path, File.READ) #open the file
-   save_data = savegame.get_var() #get the value
-   savegame.close() #close the file
-   return save_data["highscore"] #return the value
 
 func _ready():
 	$score_hud._reset_score()
@@ -42,8 +46,7 @@ func _update_score():
 
 func _show_game_finish():
 #	print("game finished")
-	if read_savegame() < $score_hud.count:
-		save($score_hud.count)
+	save($score_hud.count)
 	$restart_button.visible = true
 	get_tree().paused = true
 
@@ -60,7 +63,8 @@ func _on_collided():
 
 func _on_powerup_timer_timeout():
 	randomize()
-	print("powerup started")
+#	print("powerup started")
 	powerup_inst = powerup.instance()
 	self.add_child(powerup_inst)
 	$powerup_timer.wait_time = randi()%10 + 10
+#	$powerup_timer.wait_time = 2

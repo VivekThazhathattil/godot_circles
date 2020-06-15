@@ -29,7 +29,7 @@ func _get_velocity_direction():
 func _process(delta):
 	collided = move_and_collide(vel_mag*vel_dir*delta)
 	if collided:
-		print("powerup_collided")
+#		print("powerup_collided")
 		self.queue_free()
 	
 func _set_spawn_location():
