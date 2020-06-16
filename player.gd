@@ -15,11 +15,14 @@ func _set_orb_and_shield():
 	var shield_str = $"..".save_data["shield"]
 	if shield_str == "shield2":
 		shield = preload("res://shield2.tscn")
+	if shield_str == "shield4":
+		shield = preload("res://shield4.tscn")
 	else:
 		shield = preload("res://shield1.tscn")
 		
 	inst = shield.instance()
 	self.add_child(inst)
+	$orb.raise()
 	$orb/player_orb.set_texture(load("res://sprites/"+str(orb_str)+".png"))
 	$shield/shield.set_texture(load("res://sprites/"+str(shield_str)+".png"))
 	

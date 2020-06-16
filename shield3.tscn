@@ -4,7 +4,7 @@
 [ext_resource path="res://sprites/shield3-1.png" type="Texture" id=2]
 [ext_resource path="res://shield3.gd" type="Script" id=3]
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=1]
 resource_name = "rotate"
 length = 1.5
 loop = true
@@ -55,12 +55,14 @@ tracks/0/keys = {
 
 [node name="shield" type="RigidBody2D"]
 modulate = Color( 1, 1, 1, 0.407843 )
+collision_layer = 4
+collision_mask = 2054
 script = ExtResource( 3 )
 
 [node name="shield3-1" type="RigidBody2D" parent="."]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="shield3-1"]
-anims/rotate = SubResource( 4 )
+anims/rotate = SubResource( 1 )
 
 [node name="shield3-1" type="Sprite" parent="shield3-1"]
 texture = ExtResource( 2 )
@@ -70,7 +72,6 @@ build_mode = 1
 polygon = PoolVector2Array( -116.622, -50.0993, -124.09, -30.4629, -127.268, -11.3967, -126.871, 22.3666, -116.146, 54.9382, -102.641, 79.1683, -85.1633, 97.8373, -55.7694, 116.904, -22.8006, 129.217, 11.3599, 129.615, 43.5342, 121.273, 54.7133, 118.927, 60.9035, 126.665, 37.1788, 134.778, 6.59329, 138.75, -23.1978, 135.573, -54.1805, 127.628, -78.4106, 113.329, -108.202, 84.7293, -125.282, 53.7465, -136.404, 16.8056, -133.226, -32.449, -126.202, -52.4942 )
 
 [node name="shield3-2" type="RigidBody2D" parent="."]
-scale = Vector2( 1, 1 )
 
 [node name="shield3-2" type="Sprite" parent="shield3-2"]
 texture = ExtResource( 1 )

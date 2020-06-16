@@ -15,7 +15,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Chakra Vyuha"
+config/name="Super Spinning Shield"
 run/main_scene="res://menu.tscn"
 run/disable_stdout=true
 config/icon="res://icon.png"
@@ -44,6 +44,15 @@ tap={
 , Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
  ]
 }
+
+[layer_names]
+
+2d_render/layer_1="orb"
+2d_physics/layer_1="orb"
+2d_render/layer_2="powerup"
+2d_physics/layer_2="powerup"
+2d_render/layer_3="shield"
+2d_physics/layer_3="shield"
 
 [rendering]
 

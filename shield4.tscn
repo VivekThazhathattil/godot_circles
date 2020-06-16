@@ -1,10 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://sprites/shield.png" type="Texture" id=1]
-[ext_resource path="res://shield1.gd" type="Script" id=2]
-
-[sub_resource type="PhysicsMaterial" id=3]
-friction = 0.0
+[ext_resource path="res://sprites/shield4.png" type="Texture" id=1]
+[ext_resource path="res://shield4.gd" type="Script" id=2]
 
 [sub_resource type="Animation" id=1]
 resource_name = "shield_rotate"
@@ -43,7 +40,6 @@ modulate = Color( 1, 1, 1, 0.407843 )
 collision_layer = 4
 collision_mask = 4
 mode = 1
-physics_material_override = SubResource( 3 )
 script = ExtResource( 2 )
 
 [node name="shield" type="Sprite" parent="."]
@@ -58,7 +54,7 @@ anims/shield_rotate = SubResource( 1 )
 rotation = -1.74846e-07
 scale = Vector2( 1e-05, 1 )
 build_mode = 1
-polygon = PoolVector2Array( -1.27831e+07, -25.4362, -1.1802e+07, -57.5112, -9.6888e+06, -92.2277, -7.1228e+06, -112.982, -4.51906e+06, -126.567, -1.68891e+06, -134.114, 9182.74, -134.114, 84654.2, -142.416, -1.87758e+06, -142.793, -5.04736e+06, -136.001, -7.57562e+06, -122.039, -1.04675e+07, -100.719, -1.31951e+07, -62.3812, -1.41909e+07, -32.1479, -1.44974e+07, -1.15678, -1.42931e+07, 25.0665, -1.33951e+07, 56.6188, -1.11951e+07, 95.6188, -7.69509e+06, 122.619, -3.79509e+06, 141.619, 504908, 143.619, 6.80491e+06, 123.619, 1.00814e+07, 95.7461, 1.28101e+07, 55.2545, 1.35584e+07, 27.5265, 1.21499e+07, 17.4036, 1.10056e+07, 61.4163, 8.849e+06, 90.4646, 4.79983e+06, 119.513, 2450.56, 131.837, -3.82665e+06, 126.995, -6.90754e+06, 112.911, -1.02965e+07, 84.3028, -1.24058e+07, 42.4875, -1.31605e+07, -2.79494 )
+polygon = PoolVector2Array( 2.65766, -152, 1.5059e+06, -136.941, 1.6e+06, -16, 1.36e+07, -16, 1.52e+07, 2.65766e-05, 1.36e+07, 16, 1.6e+06, 16, 1.62998e+06, 135.7, -2.65766, 152, -1.65664e+06, 135.434, -1.6e+06, 16, -1.36e+07, 16, -1.52e+07, -2.65766e-05, -1.36e+07, -16, -1.6e+06, -16, -1.6e+06, -136 )
 
 [node name="secondary_shield_anim" type="AnimationPlayer" parent="."]
 anims/pulsate = SubResource( 2 )

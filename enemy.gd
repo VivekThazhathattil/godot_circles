@@ -3,10 +3,10 @@ var spawn_offset
 var loc
 var vel_mag
 var vel_dir
-var collided = false
 var flag = 0
 const is_powerup = 0
 var vel_sizer = 1
+var velocity
 
 func _ready():
 	randomize()
@@ -19,6 +19,7 @@ func _ready():
 func _set_enemy_velocity():
 	vel_mag = (randi()%300 + 400) * vel_sizer
 	vel_dir = _get_velocity_direction()
+	velocity = vel_mag * vel_dir
 	#print("vel_mag = " + str(vel_mag))
 	
 func _get_velocity_direction():
@@ -26,12 +27,13 @@ func _get_velocity_direction():
 	#print("normalized velocity_dir = " + str(temp_dir.normalized()))
 	return temp_dir.normalized()
 	
-func _process(delta):
-	collided = move_and_collide(vel_mag*vel_dir*delta)
-	if collided and flag == 0:
-		flag = 1
-		vel_dir = -vel_dir
-		get_parent()._update_score()
+func _physics_process(delta):
+	var collision = move_and_collide(velocity * delta)
+	if  collision:
+		if flag == 0:
+			flag = 1
+			get_parent()._update_score()
+		velocity = velocity.bounce(collision.normal)
 		$".."._on_collided()
 	
 func _set_spawn_location():
@@ -91,7 +93,7 @@ func _sequential_modulator(_key):
 		elif _key < 100:
 			if _key == 80:
 				_play_sound()
-			var rand_size = rand_range(0.5,3)
+			var rand_size = rand_range(0.5,2)
 			self.scale = Vector2(rand_size,rand_size)
 			modulate = Color(randf(),randf(),randf(),1)
 			
@@ -104,6 +106,6 @@ func _sequential_modulator(_key):
 			vel_sizer += float(_key)/1000
 			
 func _play_sound():
-	$"../sfx".set_stream($"..".sfx[2])
-	$"../sfx".play()
+	$"../levelup".set_stream($"..".sfx[2])
+	$"../levelup".play()
 		

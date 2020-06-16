@@ -40,6 +40,8 @@ tracks/0/keys = {
 
 [node name="shield" type="RigidBody2D"]
 modulate = Color( 1, 1, 1, 0.407843 )
+collision_layer = 4
+collision_mask = 4
 mode = 1
 physics_material_override = SubResource( 1 )
 script = ExtResource( 2 )

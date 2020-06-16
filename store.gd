@@ -103,4 +103,6 @@ func _on_shield9_pressed():
 
 func _on_shield10_pressed():
 	store_shield_texture("shield1-des7")
-	
+
+func _on_shield11_pressed():
+	store_shield_texture("shield4")

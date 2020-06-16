@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-var shield_texture = preload("res://sprites/shield1-des7.png")
+var shield_texture = preload("res://sprites/shield4.png")
 
 func _ready():
 	$shield.set_texture(shield_texture)
@@ -8,7 +8,6 @@ func _ready():
 
 func _custom_rotate():
 	$AnimationPlayer.play("shield_rotate")
-#	pass
+	
 func _custom_rotate_backwards():
 	$AnimationPlayer.play_backwards("shield_rotate")
-#	pass
