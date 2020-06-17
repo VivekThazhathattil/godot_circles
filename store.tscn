@@ -60,8 +60,8 @@ tracks/0/keys = {
 script = ExtResource( 20 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_right = 1400.0
+margin_bottom = 1024.0
 rect_min_size = Vector2( 1200, 1024 )
 color = Color( 0.0666667, 0.0666667, 0.0666667, 1 )
 __meta__ = {

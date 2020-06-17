@@ -15,7 +15,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Super Spinning Shield"
+config/name="Super Spin Shield"
 run/main_scene="res://menu.tscn"
 run/disable_stdout=true
 config/icon="res://icon.png"
@@ -53,6 +53,10 @@ tap={
 2d_physics/layer_2="powerup"
 2d_render/layer_3="shield"
 2d_physics/layer_3="shield"
+
+[physics]
+
+2d/default_gravity=0
 
 [rendering]
 
